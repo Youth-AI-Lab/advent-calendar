@@ -30,7 +30,7 @@ header img.logo { width: 92px; height: 92px; border-radius: 50%; }
 h1 { font-size: clamp(30px, 5vw, 46px); font-weight: 800; margin: 0; line-height: 1.05; color: var(--ink); }
 .with { font-size: clamp(16px, 2.2vw, 19px); font-weight: 600; margin: 6px 0 0; color: var(--ink); } .with span { font-weight: 800; background: linear-gradient(transparent 55%, var(--pink) 55%); padding: 0 3px; }
 .lights { display: flex; justify-content: center; gap: clamp(12px, 2.6vw, 26px); margin: 0 auto 8px; max-width: 640px; position: relative; }
-.lights:before { content: ""; position: absolute; left: 0; right: 0; top: 6px; height: 20px; border-top: 2.5px solid var(--ink); border-radius: 50%; }
+.lights:before { content: ""; position: absolute; left: -6px; right: -6px; top: 2px; height: 26px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'%3E%3Cpath d='M0 17 Q50 -5 100 17' fill='none' stroke='%231a1a1a' stroke-width='2.5' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") no-repeat center / 100% 100%; }
 .lights i { width: 14px; height: 20px; border: 2.5px solid var(--ink); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; margin-top: 14px; animation: blink 1.4s infinite alternate; }
 .lights i:nth-child(5n+1) { background: var(--pink); } .lights i:nth-child(5n+2) { background: var(--blue); animation-delay: .3s; } .lights i:nth-child(5n+3) { background: var(--yellow); animation-delay: .6s; } .lights i:nth-child(5n+4) { background: var(--green); animation-delay: .9s; } .lights i:nth-child(5n) { background: var(--purple); animation-delay: 1.2s; }
 @keyframes blink { to { filter: brightness(1.25); box-shadow: 0 0 12px 3px rgba(255,255,255,.9); } }
