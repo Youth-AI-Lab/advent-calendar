@@ -87,8 +87,8 @@ h1 { font-size: clamp(30px, 5vw, 46px); font-weight: 800; margin: 0; line-height
 @keyframes wiggle { 0%, 60%, 100% { transform: rotate(0); } 70% { transform: rotate(-12deg); } 80% { transform: rotate(10deg); } 90% { transform: rotate(-6deg); } }
 @keyframes peek { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 .countdown { display: inline-block; color: var(--ink); background: var(--yellow); border: 2.5px solid var(--ink); border-radius: 99px; padding: 5px 16px; font-weight: 800; font-size: 16px; box-shadow: 3px 3px 0 var(--ink); }
-.card h2 { font-size: 26px; margin: 6px 0 6px; line-height: 1.15; }
-.card p { font-size: 17px; margin: 0 0 18px; line-height: 1.45; }
+.card h2 { font-size: 26px; margin: 6px 0 6px; line-height: 1.15; white-space: nowrap; }
+.card p { font-size: 17px; margin: 0 auto 18px; line-height: 1.45; text-wrap: balance; }
 .card .btn { display: inline-block; background: var(--orange); color: #fff; font-weight: 800; text-decoration: none; padding: 11px 22px; border: 3px solid var(--ink); border-radius: 99px; box-shadow: 4px 4px 0 var(--ink); font-size: 17px; }
 .card .btn:hover { transform: translate(-1px,-1px); box-shadow: 5px 5px 0 var(--ink); }
 .card .close { position: absolute; top: 10px; right: 12px; background: none; border: 0; font-size: 30px; font-weight: 800; cursor: pointer; color: var(--ink); line-height: 1; }
@@ -227,10 +227,10 @@ const DAYS = [
   { t: 'Make Cities Great Again', d: 'Equip a robot with senses and discover how to make your city healthier for everyone.', v: 'CitiesGreat', u: SITE + '0bd956_23d9c659c4484ef18fddf2475a09d183.pdf' },
   { t: 'Website and AI', d: 'Follow a trail of scrolls to finish a website, then see what AI can and cannot repair.', v: 'WebsiteAI', u: SITE + '0bd956_9455ba3665764c3680d62f25c46155d3.pdf' },
   { t: 'Build your own chatbot', d: 'Six workshops to build a chatbot, choose what it reads, and decide who is in charge.', v: 'chatbot', u: 'https://youth-ai-lab.github.io/yal-workshop/', b: 'Open the workshops' },
-  { t: 'AI Detectives: How Do Machines Learn?', d: 'Sort the cards, train the machine, and find out who really decides what it learns.', v: 'UAB_AI_Detectives', u: SITE + '0bd956_663d6d1177ed4b7b8bb90dd24857689c.pdf' },
-  { t: 'micro:bit CreateAI: Making a game box!', d: 'Train a pocket computer to recognise your moves, and turn each gesture into a mini-game.', v: 'microbitgamebox', u: SITE + '0bd956_8ae15da9e93e452489ec713068b98f33.pdf' },
+  { t: 'AI Detectives', d: 'Sort the cards, train the machine, and find out who really decides what it learns.', v: 'UAB_AI_Detectives', u: SITE + '0bd956_663d6d1177ed4b7b8bb90dd24857689c.pdf' },
+  { t: 'micro:bit Game Box', d: 'Train a pocket computer to recognise your moves, and turn each gesture into a mini-game.', v: 'microbitgamebox', u: SITE + '0bd956_8ae15da9e93e452489ec713068b98f33.pdf' },
   { t: 'Illusion is all that matters', d: 'Can a machine really “think”? Read, debate, and design a robot for good.', v: 'Illusions', u: SITE + '0bd956_2937689684204971b13b585933fe18b2.pdf' },
-  { t: 'Bio-inspired Algorithms: Reinforce your Learnings', d: 'Learn like AI does: trial, error, and rewards, then program a real robot.', v: 'BioInspiredAlgorithms', u: SITE + '0bd956_83da7b18da6244d48884babd9cc389db.pdf' },
+  { t: 'Bio-inspired Algorithms', d: 'Learn like AI does: trial, error, and rewards, then program a real robot.', v: 'BioInspiredAlgorithms', u: SITE + '0bd956_83da7b18da6244d48884babd9cc389db.pdf' },
   { t: 'Looks Right… Is It Right?', d: 'Test AI outputs for accuracy, bias, and fairness: can you spot the flaws?', v: 'LooksRight', u: SITE + '0bd956_dd3c542fade845f297818f4f8aa65c8e.pdf' },
   { t: 'AI and Hacking', d: 'Play the hacker AI or the guardian AI, and find out what each card means in real life.', v: 'AI_Hacking', u: SITE + '0bd956_ffc696ac0acc4fdaae2022d64f1733b9.pdf' },
   { t: 'Designing an AI with a Robot', d: 'Take on a sustainability challenge and prototype a robot that sees, decides, and acts.', v: 'UAB_RobotAiDesigning', u: SITE + '0bd956_4a9b7cb56ef94e92ab50df5d3bd85be6.pdf' },
@@ -313,7 +313,17 @@ function showCard(day) {
   document.getElementById('cardText').textContent = r.d;
   const btn = document.getElementById('cardBtn'); btn.style.display = ''; btn.href = r.u; btn.textContent = r.b || 'Download the sheet';
   document.getElementById('cardSmall').textContent = day < 24 ? 'Come back tomorrow for door ' + (day + 1) + '.' : 'Merry Christmas from the Youth AI Lab team!';
-  veil.classList.add('on'); document.getElementById('closeBtn').focus();
+  veil.classList.add('on'); fitCard(); document.getElementById('closeBtn').focus();
+}
+// Title on one line, description on exactly two lines
+function fitCard() {
+  const h = document.getElementById('cardTitle'), p = document.getElementById('cardText');
+  let z = 26; h.style.fontSize = z + 'px';
+  while (h.scrollWidth > h.clientWidth && z > 16) { z--; h.style.fontSize = z + 'px'; }
+  let y = 17; p.style.fontSize = y + 'px'; p.style.maxWidth = '';
+  const lines = () => Math.round(p.getBoundingClientRect().height / (y * 1.45));
+  while (lines() > 2 && y > 14) { y--; p.style.fontSize = y + 'px'; }
+  if (lines() < 2) { const r = document.createRange(); r.selectNodeContents(p); p.style.maxWidth = Math.ceil(r.getBoundingClientRect().width * 0.6) + 'px'; }
 }
 function showLocked(day) {
   document.getElementById('cardDay').textContent = day + ' December';
