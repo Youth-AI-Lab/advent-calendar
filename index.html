@@ -30,6 +30,7 @@ header img.logo { width: 92px; height: 92px; border-radius: 50%; }
 h1 { font-size: clamp(30px, 5vw, 46px); font-weight: 800; margin: 0; line-height: 1.05; color: var(--ink); }
 .with { font-size: clamp(16px, 2.2vw, 19px); font-weight: 600; margin: 6px 0 0; color: var(--ink); } .with span { font-weight: 800; background: linear-gradient(transparent 55%, var(--pink) 55%); padding: 0 3px; }
 .lights { display: flex; justify-content: center; gap: clamp(12px, 2.6vw, 26px); margin: 0 auto 8px; max-width: 640px; position: relative; }
+.lights:before { content: ""; position: absolute; left: 0; right: 0; top: 6px; height: 20px; border-top: 2.5px solid var(--ink); border-radius: 50%; }
 .lights i { width: 14px; height: 20px; border: 2.5px solid var(--ink); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; margin-top: 14px; animation: blink 1.4s infinite alternate; }
 .lights i:nth-child(5n+1) { background: var(--pink); } .lights i:nth-child(5n+2) { background: var(--blue); animation-delay: .3s; } .lights i:nth-child(5n+3) { background: var(--yellow); animation-delay: .6s; } .lights i:nth-child(5n+4) { background: var(--green); animation-delay: .9s; } .lights i:nth-child(5n) { background: var(--purple); animation-delay: 1.2s; }
 @keyframes blink { to { filter: brightness(1.25); box-shadow: 0 0 12px 3px rgba(255,255,255,.9); } }
@@ -114,51 +115,6 @@ footer p.lic { font-size: 13px; margin: 16px 0 0; }
 @media (max-width: 720px) { footer .site p, footer .funding { text-align: center; } footer .funding { flex-direction: column; } }
 @media (prefers-reduced-motion: reduce) { .lockart .padlock, .lockart .bot, .lights i, .rover, .rover svg, .door.today-door, .card, .confetti { animation: none !important; } #snow { display: none; } }
 
-/* garland: a soft light running along the bulbs */
-.lights i { --g: rgba(250,137,210,.75); animation: chase 4.5s ease-in-out infinite !important; }
-.lights i:nth-child(5n+2) { --g: rgba(56,182,255,.75); } .lights i:nth-child(5n+3) { --g: rgba(255,214,10,.85); } .lights i:nth-child(5n+4) { --g: rgba(126,217,87,.75); } .lights i:nth-child(5n) { --g: rgba(169,139,245,.75); }
-.lights i:nth-child(1) { animation-delay: 1.62s !important; animation-duration: 3.80s !important; }
-.lights i:nth-child(2) { animation-delay: 3.25s !important; animation-duration: 3.64s !important; }
-.lights i:nth-child(3) { animation-delay: 2.68s !important; animation-duration: 4.23s !important; }
-.lights i:nth-child(4) { animation-delay: 0.29s !important; animation-duration: 4.51s !important; }
-.lights i:nth-child(5) { animation-delay: 0.19s !important; animation-duration: 4.37s !important; }
-.lights i:nth-child(6) { animation-delay: 0.35s !important; animation-duration: 3.68s !important; }
-.lights i:nth-child(7) { animation-delay: 2.12s !important; animation-duration: 5.15s !important; }
-.lights i:nth-child(8) { animation-delay: 0.62s !important; animation-duration: 3.95s !important; }
-.lights i:nth-child(9) { animation-delay: 3.14s !important; animation-duration: 5.40s !important; }
-.lights i:nth-child(10) { animation-delay: 2.89s !important; animation-duration: 4.29s !important; }
-.lights i:nth-child(11) { animation-delay: 4.88s !important; animation-duration: 3.59s !important; }
-.lights i:nth-child(12) { animation-delay: 4.29s !important; animation-duration: 4.08s !important; }
-.lights i:nth-child(13) { animation-delay: 0.72s !important; animation-duration: 3.74s !important; }
-.lights i:nth-child(14) { animation-delay: 1.54s !important; animation-duration: 5.13s !important; }
-.lights i:nth-child(15) { animation-delay: 0.90s !important; animation-duration: 4.66s !important; }
-.lights i:nth-child(16) { animation-delay: 3.19s !important; animation-duration: 4.24s !important; }
-@keyframes chase { 0%, 46%, 100% { box-shadow: none; } 16%, 30% { filter: brightness(1.12) saturate(1.1); box-shadow: 0 0 8px 3px rgba(255,255,255,.85), 0 0 20px 8px var(--g); } }
-.lights i:nth-child(5n+3) { background: #ffd60a !important; }
-@media (prefers-reduced-motion: reduce) { .lights i { animation: none !important; } }
-/* garland shape */
-.lights { position: relative; display: flex; justify-content: space-between; height: 58px; max-width: 600px; margin: 0 auto 0; padding: 0 2px; }
-.lights:before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 40px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40' preserveAspectRatio='none'%3E%3Cpath d='M0 4 Q50 44 100 4' fill='none' stroke='%231a1a1a' stroke-width='2.5' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") no-repeat center / 100% 100%; }
-.lights i { position: relative; margin-top: 0 !important; transform-origin: 50% -6px; }
-.lights i:after { content: ""; position: absolute; left: 50%; top: -8px; width: 8px; height: 8px; margin-left: -4px; background: #1a1a1a; border-radius: 2px 2px 1px 1px; }
-.lights i:nth-child(1) { top: 11.4px; transform: rotate(-7.1deg); }
-.lights i:nth-child(2) { top: 15.8px; transform: rotate(-6.2deg); }
-.lights i:nth-child(3) { top: 19.5px; transform: rotate(-5.2deg); }
-.lights i:nth-child(4) { top: 22.7px; transform: rotate(-4.3deg); }
-.lights i:nth-child(5) { top: 25.2px; transform: rotate(-3.3deg); }
-.lights i:nth-child(6) { top: 27.0px; transform: rotate(-2.4deg); }
-.lights i:nth-child(7) { top: 28.3px; transform: rotate(-1.4deg); }
-.lights i:nth-child(8) { top: 28.9px; transform: rotate(-0.5deg); }
-.lights i:nth-child(9) { top: 28.9px; transform: rotate(0.5deg); }
-.lights i:nth-child(10) { top: 28.3px; transform: rotate(1.4deg); }
-.lights i:nth-child(11) { top: 27.0px; transform: rotate(2.4deg); }
-.lights i:nth-child(12) { top: 25.2px; transform: rotate(3.3deg); }
-.lights i:nth-child(13) { top: 22.7px; transform: rotate(4.3deg); }
-.lights i:nth-child(14) { top: 19.5px; transform: rotate(5.2deg); }
-.lights i:nth-child(15) { top: 15.8px; transform: rotate(6.2deg); }
-.lights i:nth-child(16) { top: 11.4px; transform: rotate(7.1deg); }
-@media (max-width: 520px) { .lights { gap: 0; } .lights i { width: 13px !important; height: 18px !important; } .lights i:nth-child(n+11) { display: block !important; } }
-/* end garland shape */
 </style>
 </head>
 <body>
