@@ -114,6 +114,28 @@ footer p.disc { font-size: 12.5px; color: #555; margin: 0; max-width: 720px; lin
 footer p.lic { font-size: 13px; margin: 16px 0 0; }
 @media (max-width: 720px) { footer .site p, footer .funding { text-align: center; } footer .funding { flex-direction: column; } }
 @media (prefers-reduced-motion: reduce) { .lockart .padlock, .lockart .bot, .lights i, .rover, .rover svg, .door.today-door, .card, .confetti { animation: none !important; } #snow { display: none; } }
+
+/* garland: a soft light running along the bulbs */
+.lights i { --g: rgba(250,137,210,.75); animation: chase 2.4s ease-in-out infinite !important; }
+.lights i:nth-child(5n+2) { --g: rgba(56,182,255,.75); } .lights i:nth-child(5n+3) { --g: rgba(249,199,36,.8); } .lights i:nth-child(5n+4) { --g: rgba(126,217,87,.75); } .lights i:nth-child(5n) { --g: rgba(169,139,245,.75); }
+.lights i:nth-child(1) { animation-delay: 0.15s !important; }
+.lights i:nth-child(2) { animation-delay: 0.30s !important; }
+.lights i:nth-child(3) { animation-delay: 0.45s !important; }
+.lights i:nth-child(4) { animation-delay: 0.60s !important; }
+.lights i:nth-child(5) { animation-delay: 0.75s !important; }
+.lights i:nth-child(6) { animation-delay: 0.90s !important; }
+.lights i:nth-child(7) { animation-delay: 1.05s !important; }
+.lights i:nth-child(8) { animation-delay: 1.20s !important; }
+.lights i:nth-child(9) { animation-delay: 1.35s !important; }
+.lights i:nth-child(10) { animation-delay: 1.50s !important; }
+.lights i:nth-child(11) { animation-delay: 1.65s !important; }
+.lights i:nth-child(12) { animation-delay: 1.80s !important; }
+.lights i:nth-child(13) { animation-delay: 1.95s !important; }
+.lights i:nth-child(14) { animation-delay: 2.10s !important; }
+.lights i:nth-child(15) { animation-delay: 2.25s !important; }
+.lights i:nth-child(16) { animation-delay: 2.40s !important; }
+@keyframes chase { 0%, 45%, 100% { filter: brightness(.92); box-shadow: none; } 18% { filter: brightness(1.25); box-shadow: 0 0 10px 3px #fff, 0 0 22px 8px var(--g); } }
+@media (prefers-reduced-motion: reduce) { .lights i { animation: none !important; } }
 </style>
 </head>
 <body>
