@@ -110,9 +110,10 @@ h2 { font-size: clamp(20px, 3.4vw, 25px); margin: 0 0 14px; line-height: 1.25; c
 .center { text-align: center; }
 .gift24 { display: inline-block; margin-right: 6px; font-weight: 800; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; background: var(--yellow); border: 2px solid var(--ink); border-radius: 99px; padding: 1px 10px; vertical-align: 2px; }
 .unwrap { text-align: center; }
+.unwrap .hint { font-size: 20px; font-weight: 700; margin: 26px 0 0; }
 .unwrap h2 { font-size: clamp(22px, 3.6vw, 28px); margin: 20px 0 4px; }
 .unwrap p { font-size: 19px; font-weight: 600; margin: 18px 0 0; }
-.giftbox { width: min(620px, 96%); margin: 22px auto 10px; display: block; cursor: pointer; overflow: visible; }
+.giftbox { width: min(620px, 96%); margin: 10px auto 0; display: block; cursor: pointer; overflow: visible; }
 .giftbox:focus { outline: none; }
 .giftbox:focus-visible { outline: 3px dashed var(--blue); outline-offset: 8px; border-radius: 12px; }
 .giftbox .lid { transition: transform .6s cubic-bezier(.3,1.6,.5,1); transform-box: fill-box; transform-origin: 50% 100%; }
@@ -170,6 +171,7 @@ footer a { color: var(--ink); font-weight: 700; }
   </header>
   <main id="app" aria-live="polite"></main>
 </div>
+<div id="rev" aria-live="polite"></div>
 <footer id="credits"><button class="x" onclick="document.getElementById('credits').classList.remove('show')" aria-label="Close">×</button><b>Credits and sources</b><br>
   The next-word predictions were computed with <a href="https://huggingface.co/openai-community/gpt2" target="_blank" rel="noopener">GPT-2</a>, an open language model released by OpenAI in 2019. Today’s models would give other answers.<br>
   Real photos via Wikimedia Commons, cropped and resized: <a href="https://commons.wikimedia.org/wiki/File:Rotkehlchen_im_Landschaftsschutzgebiet_%22Unterer_Neckar,_Zwischen_Heidelberg_und_Ladenburg%22_04.jpg" target="_blank" rel="noopener">robin</a> by Stephan Sprinz (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>),
@@ -275,11 +277,10 @@ const NO_IMG = ['Fooled! It happens to everyone.', 'Got you!', 'The machine wins
 
 function intro() {
   app.innerHTML = `<section class="card unwrap">
+    <p class="hint">Click on the gift to unwrap it!</p>
     <svg class="giftbox" id="giftbox" viewBox="-10 -14 560 244" role="button" tabindex="0" aria-label="Unwrap the gift"><g transform="translate(150 20)"><ellipse cx="110" cy="192" rx="90" ry="7" fill="rgba(0,0,0,.12)"/><g class="shake"><g stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"><rect x="30" y="86" width="160" height="104" rx="8" fill="#fa89d2"/><rect x="98" y="86" width="24" height="104" fill="#f9c724"/></g><g class="lid" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"><rect x="20" y="58" width="180" height="32" rx="7" fill="#fa89d2"/><rect x="98" y="58" width="24" height="32" fill="#f9c724"/><path d="M110 58 C86 14 46 30 82 58 Z M110 58 C134 14 174 30 138 58 Z" fill="#f9c724"/><circle cx="110" cy="56" r="9" fill="#f9c724"/></g></g></g><g transform="translate(30 104) scale(1.05)"><g class="hop1"><ellipse cx="50" cy="112" rx="34" ry="5" fill="rgba(0,0,0,.12)"/><circle cx="28" cy="100" r="10" fill="#2b2b2b" stroke="#1a1a1a" stroke-width="2.5"/><circle cx="72" cy="100" r="10" fill="#2b2b2b" stroke="#1a1a1a" stroke-width="2.5"/><rect x="47.5" y="34" width="5" height="22" rx="1" fill="#2b2b2b" stroke="#1a1a1a" stroke-width="2"/><path d="M36 36 Q50 8 70 22 L64 30 Z" fill="#e8322b" stroke="#1a1a1a" stroke-width="2.5" stroke-linejoin="round"/><circle cx="70" cy="22" r="5" fill="#fff" stroke="#1a1a1a" stroke-width="2"/><rect x="34" y="31" width="32" height="8" rx="4" fill="#fff" stroke="#1a1a1a" stroke-width="2"/><rect x="14" y="54" width="72" height="44" rx="10" fill="#38b6ff" stroke="#1a1a1a" stroke-width="2.5"/><circle cx="50" cy="76" r="13" fill="#fff" stroke="#1a1a1a" stroke-width="2.5"/><circle cx="55" cy="78" r="6.5" fill="#1a1a1a"/><circle cx="57" cy="75.5" r="1.8" fill="#fff"/></g></g><g transform="translate(385 104) scale(1.05)"><g class="hop2"><ellipse cx="50" cy="112" rx="34" ry="5" fill="rgba(0,0,0,.12)"/><circle cx="28" cy="100" r="10" fill="#2b2b2b" stroke="#1a1a1a" stroke-width="2.5"/><circle cx="72" cy="100" r="10" fill="#2b2b2b" stroke="#1a1a1a" stroke-width="2.5"/><rect x="47.5" y="34" width="5" height="22" rx="1" fill="#2b2b2b" stroke="#1a1a1a" stroke-width="2"/><path d="M36 36 Q50 8 70 22 L64 30 Z" fill="#e8322b" stroke="#1a1a1a" stroke-width="2.5" stroke-linejoin="round"/><circle cx="70" cy="22" r="5" fill="#fff" stroke="#1a1a1a" stroke-width="2"/><rect x="34" y="31" width="32" height="8" rx="4" fill="#fff" stroke="#1a1a1a" stroke-width="2"/><rect x="14" y="54" width="72" height="44" rx="10" fill="#7ed957" stroke="#1a1a1a" stroke-width="2.5"/><circle cx="50" cy="76" r="13" fill="#fff" stroke="#1a1a1a" stroke-width="2.5"/><circle cx="45" cy="78" r="6.5" fill="#1a1a1a"/><circle cx="47" cy="75.5" r="1.8" fill="#fff"/></g></g><g transform="translate(400 6)"><path d="M0 0 h132 a12 12 0 0 1 12 12 v26 a12 12 0 0 1 -12 12 h-96 l-14 14 l2 -14 h-24 a12 12 0 0 1 -12 -12 v-26 a12 12 0 0 1 12 -12 z" transform="translate(-12 0)" fill="#fff" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/><text x="54" y="31" text-anchor="middle" font-family="Assistant, sans-serif" font-weight="800" font-size="17" fill="#1a1a1a">Psst… it’s for you!</text></g><path class="tw" transform="translate(70 40) scale(1)" d="M0 -10 L3 -3 L10 0 L3 3 L0 10 L-3 3 L-10 0 L-3 -3 Z" fill="#f9c724" stroke="#1a1a1a" stroke-width="2" stroke-linejoin="round"/><path class="tw" transform="translate(130 90) scale(0.7)" d="M0 -10 L3 -3 L10 0 L3 3 L0 10 L-3 3 L-10 0 L-3 -3 Z" fill="#fa89d2" stroke="#1a1a1a" stroke-width="2" stroke-linejoin="round"/><path class="tw" transform="translate(390 170) scale(0.6)" d="M0 -10 L3 -3 L10 0 L3 3 L0 10 L-3 3 L-10 0 L-3 -3 Z" fill="#f9c724" stroke="#1a1a1a" stroke-width="2" stroke-linejoin="round"/><path class="tw" transform="translate(150 200) scale(0.6)" d="M0 -10 L3 -3 L10 0 L3 3 L0 10 L-3 3 L-10 0 L-3 -3 Z" fill="#a98bf5" stroke="#1a1a1a" stroke-width="2" stroke-linejoin="round"/></svg>
-    <div class="center"><button class="next go" id="unwrapBtn">Unwrap it</button></div>
   </section>`;
   const open = () => { document.getElementById('giftbox').classList.add('open'); confetti(70); setTimeout(rules, 900); };
-  document.getElementById('unwrapBtn').addEventListener('click', open);
   document.getElementById('giftbox').addEventListener('click', open);
 }
 
@@ -320,7 +321,8 @@ function go() {
   document.body.dataset.t = Q[i].type; document.body.classList.remove('answered');
   app.innerHTML = `<section class="card">
     <div class="top"><span class="kind" style="--c:${COLORS[q.type]}">${LABEL[q.type]} · ${i + 1}/${Q.length}</span>${dots()}</div>
-    ${body}</section><div id="rev"></div>`;
+    ${body}</section>`;
+  document.getElementById('rev').innerHTML = '';
   app.querySelectorAll('.choices button').forEach(b => b.addEventListener('click', () => answer(b)));
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -349,11 +351,12 @@ function answer(btn) {
     ${q.type === 'word' ? extra : `<div class="revimg"><img src="${q.img}" alt=""><div>`}<p class="explain">${q.text}</p>${q.credit ? `<p class="credit">${q.credit}${q.src ? ` <a href="${q.src}" target="_blank" rel="noopener">See the source on Wikimedia Commons</a>` : ''}</p>` : ''}${q.type === 'word' ? '' : '</div></div>'}
     <button class="next" id="nextBtn">${i < Q.length - 1 ? 'Next question' : 'See my score'}</button></div></div>`;
   document.getElementById('nextBtn').addEventListener('click', go);
-  setTimeout(() => app.querySelectorAll('.fill').forEach(f => f.style.width = f.dataset.w + '%'), 40);
+  setTimeout(() => document.querySelectorAll('#rev .fill').forEach(f => f.style.width = f.dataset.w + '%'), 40);
   app.querySelector('.top').innerHTML = app.querySelector('.top').innerHTML.replace(/<div class="dots">.*<\/div>/, dots());
 }
 
 function end() {
+  document.getElementById('rev').innerHTML = '';
   document.body.classList.remove('answered');
   document.body.classList.remove('playing'); delete document.body.dataset.t;
   const n = results.filter(Boolean).length;
