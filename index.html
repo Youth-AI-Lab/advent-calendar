@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Waiting for the Holidays with Youth AI Lab</title>
+<meta name="description" content="24 days, 24 resources to explore AI with young people. Open a door every day of December.">
+<meta property="og:title" content="Waiting for the Holidays with Youth AI Lab">
+<meta property="og:description" content="24 days, 24 resources to explore AI with young people. Open a door every day of December.">
+<meta property="og:image" content="assets/og-image.png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1a1a; --blue: #38b6ff; --blue-soft: #cbecff; --green: #7ed957; --orange: #f37030;
+  --pink: #fa89d2; --yellow: #f9c724; --purple: #a98bf5; --sky1: #dff3ff; --sky2: #ffffff;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { font-family: 'Assistant', system-ui, sans-serif; color: var(--ink); background: linear-gradient(#bfe6ff 0%, #e8f6ff 45%, #ffffff 100%); min-height: 100vh; overflow-x: hidden; display: flex; flex-direction: column; }
+body > .wrap { flex: 1; width: 100%; }
+#snow { position: fixed; inset: 0; pointer-events: none; z-index: 1; }
+.wrap { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; padding: 22px 16px 40px; }
+
+/* header */
+header { display: flex; align-items: center; gap: 18px; justify-content: center; text-align: center; flex-wrap: wrap; margin-bottom: 8px; }
+header img.logo { width: 92px; height: 92px; border-radius: 50%; }
+h1 { font-size: clamp(30px, 5vw, 46px); font-weight: 800; margin: 0; line-height: 1.05; color: var(--ink); }
+.with { font-size: clamp(16px, 2.2vw, 19px); font-weight: 600; margin: 6px 0 0; color: var(--ink); } .with span { font-weight: 800; background: linear-gradient(transparent 55%, var(--pink) 55%); padding: 0 3px; }
+.lights { display: flex; justify-content: center; gap: clamp(12px, 2.6vw, 26px); margin: 0 auto 8px; max-width: 640px; position: relative; }
+.lights:before { content: ""; position: absolute; left: 0; right: 0; top: 6px; height: 20px; border-top: 2.5px solid var(--ink); border-radius: 50%; }
+.lights i { width: 14px; height: 20px; border: 2.5px solid var(--ink); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; margin-top: 14px; animation: blink 1.4s infinite alternate; }
+.lights i:nth-child(5n+1) { background: var(--pink); } .lights i:nth-child(5n+2) { background: var(--blue); animation-delay: .3s; } .lights i:nth-child(5n+3) { background: var(--yellow); animation-delay: .6s; } .lights i:nth-child(5n+4) { background: var(--green); animation-delay: .9s; } .lights i:nth-child(5n) { background: var(--purple); animation-delay: 1.2s; }
+@keyframes blink { to { filter: brightness(1.25); box-shadow: 0 0 12px 3px rgba(255,255,255,.9); } }
+@media (max-width: 520px) { .lights i:nth-child(n+11) { display: none; } }
+.today { display: inline-block; margin-top: 10px; background: var(--ink); color: #fff; font-weight: 700; padding: 5px 14px; border-radius: 99px; font-size: 14px; }
+
+/* scene */
+.scene { position: relative; height: 190px; margin: 14px calc(50% - 50vw) 6px; width: 100vw; overflow: hidden; }
+.scene svg.land { position: absolute; left: 50%; transform: translateX(-50%); bottom: 0; width: 2000px; max-width: none; height: 190px; }
+.rover { position: absolute; bottom: 26px; left: -110px; width: 96px; animation: drive 26s linear infinite; z-index: 3; }
+.rover svg { width: 100%; height: auto; display: block; animation: bump .5s ease-in-out infinite alternate; }
+@keyframes drive { to { left: calc(100% + 30px); } }
+@keyframes bump { to { transform: translateY(-3px); } }
+
+/* doors */
+.grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; margin-top: 10px; }
+@media (max-width: 820px) { .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; } }
+.door { position: relative; aspect-ratio: 1 / 1; border: 3px solid var(--ink); border-radius: 14px; background: var(--c); cursor: pointer; padding: 0; font: inherit; color: var(--ink);
+  box-shadow: 5px 5px 0 var(--ink); transition: transform .15s; overflow: hidden; }
+.door:hover { transform: translate(-2px, -2px) rotate(-1deg); box-shadow: 7px 7px 0 var(--ink); }
+.door:focus-visible { outline: 4px solid var(--blue); outline-offset: 3px; }
+.door .ribbon-v, .door .ribbon-h { position: absolute; background: rgba(255,255,255,.85); border: 0 solid var(--ink); }
+.door .ribbon-v { left: 50%; top: 0; bottom: 0; width: 16%; transform: translateX(-50%); border-left-width: 2.5px; border-right-width: 2.5px; }
+.door .ribbon-h { top: 50%; left: 0; right: 0; height: 16%; transform: translateY(-50%); border-top-width: 2.5px; border-bottom-width: 2.5px; }
+.door .num { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 46%; aspect-ratio: 1; border-radius: 50%; background: #fff; border: 3px solid var(--ink); display: grid; place-items: center; font-size: clamp(20px, 3.6vw, 36px); font-weight: 800; color: var(--ink); z-index: 2; }
+.door .bow { position: absolute; top: 3%; left: 50%; transform: translateX(-50%); width: 34%; z-index: 2; }
+.door .lock { position: absolute; right: 7%; bottom: 7%; width: 20%; z-index: 3; }
+
+.door.locked:hover { transform: none; }
+.door.shake { animation: shake .4s; }
+@keyframes shake { 20%,60% { transform: translateX(-5px) rotate(-2deg); } 40%,80% { transform: translateX(5px) rotate(2deg); } }
+.door.open { background: #fff; }
+.door.open .ribbon-v, .door.open .ribbon-h, .door.open .bow { display: none; }
+.vig { display: block; border-radius: 50%; background: var(--c); clip-path: circle(47%); }
+.vig img { display: block; width: 100%; height: 100%; clip-path: circle(38.5%); }
+.door.open .vig { position: absolute; inset: 8%; z-index: 1; }
+.door.open .num { left: 6%; top: 6%; transform: none; width: 28%; font-size: clamp(13px, 2vw, 20px); border-width: 2.5px; }
+.door.today-door:not(.open) { animation: glow 1.6s ease-in-out infinite alternate; }
+@keyframes glow { to { box-shadow: 5px 5px 0 var(--ink), 0 0 0 8px rgba(249,199,36,.6); } }
+
+/* modal */
+.veil { position: fixed; inset: 0; background: rgba(26,26,26,.55); display: none; align-items: center; justify-content: center; z-index: 20; padding: 16px; }
+.veil.on { display: flex; }
+.card { position: relative; background: #fff; border: 3px solid var(--ink); border-radius: 20px; box-shadow: 8px 8px 0 var(--ink); max-width: 460px; width: 100%; padding: 26px 24px 24px; text-align: center; animation: pop .45s cubic-bezier(.3,1.6,.5,1); }
+@keyframes pop { from { transform: scale(.5) rotate(-6deg); opacity: 0; } to { transform: none; opacity: 1; } }
+.card .day { display: inline-block; font-weight: 800; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; background: var(--yellow); border: 2px solid var(--ink); border-radius: 99px; padding: 3px 12px; }
+.card .vig { width: 150px; height: 150px; margin: 14px auto 6px; }
+.lockart { display: none; width: 230px; margin: 10px auto 2px; }
+.lockart svg { width: 100%; height: auto; display: block; overflow: visible; }
+.lockart .padlock { transform-box: fill-box; transform-origin: 50% 0; animation: wiggle 1.6s ease-in-out infinite; }
+.lockart .bot { animation: peek 2.2s ease-in-out infinite; }
+@keyframes wiggle { 0%, 60%, 100% { transform: rotate(0); } 70% { transform: rotate(-12deg); } 80% { transform: rotate(10deg); } 90% { transform: rotate(-6deg); } }
+@keyframes peek { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+.countdown { display: inline-block; color: var(--ink); background: var(--yellow); border: 2.5px solid var(--ink); border-radius: 99px; padding: 5px 16px; font-weight: 800; font-size: 16px; box-shadow: 3px 3px 0 var(--ink); }
+.card h2 { font-size: 26px; margin: 6px 0 6px; line-height: 1.15; }
+.card p { font-size: 17px; margin: 0 0 18px; line-height: 1.45; }
+.card .btn { display: inline-block; background: var(--orange); color: #fff; font-weight: 800; text-decoration: none; padding: 11px 22px; border: 3px solid var(--ink); border-radius: 99px; box-shadow: 4px 4px 0 var(--ink); font-size: 17px; }
+.card .btn:hover { transform: translate(-1px,-1px); box-shadow: 5px 5px 0 var(--ink); }
+.card .close { position: absolute; top: 10px; right: 12px; background: none; border: 0; font-size: 30px; font-weight: 800; cursor: pointer; color: var(--ink); line-height: 1; }
+.card .small { font-size: 14px; color: #555; margin: 14px 0 0; }
+.confetti { position: fixed; top: -10px; width: 10px; height: 14px; z-index: 30; pointer-events: none; animation: fall linear forwards; }
+@keyframes fall { to { transform: translateY(105vh) rotate(720deg); } }
+
+/* footer */
+footer { position: relative; z-index: 2; margin-top: 30px; background: #fff; border-top: 3px solid var(--ink); font-size: 14px; color: #333; }
+footer .in { max-width: 1100px; margin: 0 auto; padding: 28px 16px 30px; text-align: center; }
+footer .site { display: flex; gap: 32px; align-items: center; justify-content: center; flex-wrap: wrap; margin-bottom: 26px; }
+footer .site img { width: 84px; height: 84px; border-radius: 50%; }
+footer .site p { margin: 0; font-size: 17px; font-weight: 700; text-align: left; line-height: 1.35; color: var(--ink); }
+footer .site a.go { display: inline-block; background: var(--blue); color: var(--ink); font-weight: 800; text-decoration: none; padding: 10px 20px; border: 3px solid var(--ink); border-radius: 99px; box-shadow: 4px 4px 0 var(--ink); font-size: 16px; }
+footer .site a.go:hover { transform: translate(-1px,-1px); box-shadow: 5px 5px 0 var(--ink); }
+footer h3 { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; margin: 0 0 14px; color: #555; }
+footer .partners { display: flex; gap: 34px; align-items: center; justify-content: center; flex-wrap: wrap; padding-bottom: 24px; margin-bottom: 20px; border-bottom: 1.5px solid #e2e2e2; }
+footer .partners img { height: 86px; width: auto; max-width: 150px; object-fit: contain; }
+footer .partners img.sq { height: 68px; }
+footer .funding { display: flex; justify-content: center; }
+footer img.strip { display: block; width: 100%; max-width: 1000px; height: auto; margin: 0 auto 22px; padding-bottom: 22px; border-bottom: 1.5px solid #e2e2e2; box-sizing: content-box; }
+footer p.disc { font-size: 12.5px; color: #555; margin: 0; max-width: 720px; line-height: 1.5; }
+footer p.lic { font-size: 13px; margin: 16px 0 0; }
+@media (max-width: 720px) { footer .site p, footer .funding { text-align: center; } footer .funding { flex-direction: column; } }
+@media (prefers-reduced-motion: reduce) { .lockart .padlock, .lockart .bot, .lights i, .rover, .rover svg, .door.today-door, .card, .confetti { animation: none !important; } #snow { display: none; } }
+</style>
+</head>
+<body>
+<canvas id="snow" aria-hidden="true"></canvas>
+<div class="wrap">
+  <header>
+    <div>
+      <div class="lights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <h1>Waiting for the Holidays</h1>
+      <p class="with">with <span>Youth AI Lab</span> · 24 days, 24 resources to explore AI with young people</p>
+      <span class="today" id="todayLabel"></span>
+    </div>
+  </header>
+
+  <div class="scene" aria-hidden="true">
+    <svg class="land" viewBox="0 0 2000 190">
+      <g stroke="#1a1a1a" stroke-width="2.5" stroke-linejoin="round"><g transform="translate(110 147.2)"><rect x="-4" y="-10" width="8" height="10" fill="#8a5a2b"/><path d="M0 -69.6 L16.1 -38.3 L8.8 -38.3 L29.2 -10 L-29.2 -10 L-8.8 -38.3 L-16.1 -38.3 Z" fill="#7ed957"/></g><g transform="translate(170 148.9)"><rect x="-4" y="-10" width="8" height="10" fill="#8a5a2b"/><path d="M0 -49.3 L11.4 -27.1 L6.2 -27.1 L20.7 -10 L-20.7 -10 L-6.2 -27.1 L-11.4 -27.1 Z" fill="#7ed957"/></g><g transform="translate(310 150.8) scale(1.45)"><rect x="-32" y="-38" width="64" height="38" fill="#fa89d2"/><path d="M-38 -36 L0 -66 L38 -36 Z" fill="#38b6ff"/><path d="M-32 -66 Q0 -80 32 -66 L38 -36 L-38 -36 Z" fill="#fff" stroke-width="1.7"/><rect x="-8" y="-22" width="16" height="22" fill="#1a1a1a"/><rect x="-25" y="-30" width="10" height="10" fill="#f9eecd"/><rect x="15" y="-30" width="10" height="10" fill="#f9eecd"/></g><g transform="translate(450 146.3)"><rect x="-4" y="-10" width="8" height="10" fill="#8a5a2b"/><path d="M0 -58.0 L13.4 -31.9 L7.3 -31.9 L24.4 -10 L-24.4 -10 L-7.3 -31.9 L-13.4 -31.9 Z" fill="#7ed957"/></g><g transform="translate(500 144.4)"><rect x="-4" y="-10" width="8" height="10" fill="#8a5a2b"/><path d="M0 -84.1 L19.4 -46.3 L10.6 -46.3 L35.3 -10 L-35.3 -10 L-10.6 -46.3 L-19.4 -46.3 Z" fill="#7ed957"/></g><g transform="translate(550 142.3)"><rect x="-4" y="-10" width="8" height="10" fill="#8a5a2b"/><path d="M0 -49.3 L11.4 -27.1 L6.2 -27.1 L20.7 -10 L-20.7 -10 L-6.2 -27.1 L-11.4 -27.1 Z" fill="#7ed957"/></g><g transform="translate(690 138.4) scale(1.45)"><rect x="-32" y="-38" width="64" height="38" fill="#f9c724"/><path d="M-38 -36 L0 -66 L38 -36 Z" fill="#a98bf5"/><path d="M-32 -66 Q0 -80 32 -66 L38 -36 L-38 -36 Z" fill="#fff" stroke-width="1.7"/><rect x="-8" y="-22" width="16" height="22" fill="#1a1a1a"/><rect x="-25" y="-30" width="10" height="10" fill="#cbecff"/><rect x="15" y="-30" width="10" height="10" fill="#cbecff"/></g><g transform="translate(815 136.0)"><rect x="-4" y="-10" width="8" height="10" fill="#8a5a2b"/><path d="M0 -58.0 L13.4 -31.9 L7.3 -31.9 L24.4 -10 L-24.4 -10 L-7.3 -31.9 L-13.4 -31.9 Z" fill="#7ed957"/></g><g transform="translate(860 136.4)"><rect x="-4" y="-10" width="8" height="10" fill="#8a5a2b"/><path d="M0 -43.5 L10.0 -23.9 L5.5 -23.9 L18.3 -10 L-18.3 -10 L-5.5 -23.9 L-10.0 -23.9 Z" fill="#7ed957"/></g><g transform="translate(960 138.8)"><rect x="-4" y="-10" width="8" height="10" fill="#8a5a2b"/><path d="M0 -104.4 L24.1 -57.4 L13.2 -57.4 L43.8 -10 L-43.8 -10 L-13.2 -57.4 L-24.1 -57.4 Z" fill="#7ed957"/><circle cx="-9" cy="-41.8" r="5" fill="#fa89d2"/><circle cx="12" cy="-23.0" r="5" fill="#38b6ff"/><circle cx="3" cy="-68.9" r="5" fill="#f9c724"/><path transform="translate(0 -114.4) scale(1.4)" d="M0 -8 l3 6 6 1 -5 4 1 6 -5 -3 -5 3 1 -6 -5 -4 6 -1 z" fill="#f9c724"/></g><g transform="translate(1060 142.7)"><rect x="-4" y="-10" width="8" height="10" fill="#8a5a2b"/><path d="M0 -52.2 L12.1 -28.7 L6.6 -28.7 L21.9 -10 L-21.9 -10 L-6.6 -28.7 L-12.1 -28.7 Z" fill="#7ed957"/></g><g transform="translate(1190 148.6) scale(1.45)"><rect x="-32" y="-38" width="64" height="38" fill="#38b6ff"/><path d="M-38 -36 L0 -66 L38 -36 Z" fill="#a98bf5"/><path d="M-32 -66 Q0 -80 32 -66 L38 -36 L-38 -36 Z" fill="#fff" stroke-width="1.7"/><rect x="-8" y="-22" width="16" height="22" fill="#1a1a1a"/><rect x="-25" y="-30" width="10" height="10" fill="#f9eecd"/><rect x="15" y="-30" width="10" height="10" fill="#f9eecd"/></g><g transform="translate(1315 150.0)"><rect x="-4" y="-10" width="8" height="10" fill="#8a5a2b"/><path d="M0 -75.4 L17.4 -41.5 L9.5 -41.5 L31.7 -10 L-31.7 -10 L-9.5 -41.5 L-17.4 -41.5 Z" fill="#7ed957"/></g><g transform="translate(1365 149.9)"><rect x="-4" y="-10" width="8" height="10" fill="#8a5a2b"/><path d="M0 -49.3 L11.4 -27.1 L6.2 -27.1 L20.7 -10 L-20.7 -10 L-6.2 -27.1 L-11.4 -27.1 Z" fill="#7ed957"/></g><g transform="translate(1500 148.0) scale(1.45)"><rect x="-32" y="-38" width="64" height="38" fill="#f9c724"/><path d="M-38 -36 L0 -66 L38 -36 Z" fill="#fa89d2"/><path d="M-32 -66 Q0 -80 32 -66 L38 -36 L-38 -36 Z" fill="#fff" stroke-width="1.7"/><rect x="-8" y="-22" width="16" height="22" fill="#1a1a1a"/><rect x="-25" y="-30" width="10" height="10" fill="#cbecff"/><rect x="15" y="-30" width="10" height="10" fill="#cbecff"/></g><g transform="translate(1625 142.1)"><rect x="-4" y="-10" width="8" height="10" fill="#8a5a2b"/><path d="M0 -63.8 L14.7 -35.1 L8.0 -35.1 L26.8 -10 L-26.8 -10 L-8.0 -35.1 L-14.7 -35.1 Z" fill="#7ed957"/></g><g transform="translate(1675 140.1)"><rect x="-4" y="-10" width="8" height="10" fill="#8a5a2b"/><path d="M0 -87.0 L20.1 -47.9 L11.0 -47.9 L36.5 -10 L-36.5 -10 L-11.0 -47.9 L-20.1 -47.9 Z" fill="#7ed957"/></g><g transform="translate(1725 138.4)"><rect x="-4" y="-10" width="8" height="10" fill="#8a5a2b"/><path d="M0 -49.3 L11.4 -27.1 L6.2 -27.1 L20.7 -10 L-20.7 -10 L-6.2 -27.1 L-11.4 -27.1 Z" fill="#7ed957"/></g><g transform="translate(1860 137.0) scale(1.45)"><rect x="-32" y="-38" width="64" height="38" fill="#a98bf5"/><path d="M-38 -36 L0 -66 L38 -36 Z" fill="#f9c724"/><path d="M-32 -66 Q0 -80 32 -66 L38 -36 L-38 -36 Z" fill="#fff" stroke-width="1.7"/><rect x="-8" y="-22" width="16" height="22" fill="#1a1a1a"/><rect x="-25" y="-30" width="10" height="10" fill="#f9eecd"/><rect x="15" y="-30" width="10" height="10" fill="#f9eecd"/></g></g>
+      <polygon points="0,192 0,138.0 20,138.8 40,139.6 60,140.4 80,141.2 100,141.9 120,142.5 140,143.1 160,143.7 180,144.1 200,144.5 220,144.7 240,144.9 260,145.0 280,145.0 300,144.9 320,144.7 340,144.4 360,144.0 380,143.5 400,143.0 420,142.4 440,141.7 460,141.0 480,140.2 500,139.4 520,138.6 540,137.8 560,136.9 580,136.1 600,135.4 620,134.6 640,133.9 660,133.3 680,132.7 700,132.2 720,131.8 740,131.4 760,131.2 780,131.1 800,131.0 820,131.0 840,131.2 860,131.4 880,131.7 900,132.2 920,132.6 940,133.2 960,133.8 980,134.5 1000,135.3 1020,136.0 1040,136.8 1060,137.7 1080,138.5 1100,139.3 1120,140.1 1140,140.9 1160,141.6 1180,142.3 1200,142.9 1220,143.5 1240,143.9 1260,144.3 1280,144.6 1300,144.9 1320,145.0 1340,145.0 1360,144.9 1380,144.8 1400,144.5 1420,144.1 1440,143.7 1460,143.2 1480,142.6 1500,142.0 1520,141.3 1540,140.5 1560,139.7 1580,138.9 1600,138.1 1620,137.3 1640,136.5 1660,135.7 1680,134.9 1700,134.2 1720,133.5 1740,132.9 1760,132.4 1780,131.9 1800,131.6 1820,131.3 1840,131.1 1860,131.0 1880,131.0 1900,131.1 1920,131.3 1940,131.6 1960,132.0 1980,132.4 2000,133.0 2000,192" fill="#ffffff"/>
+      <polyline points="0,138.0 20,138.8 40,139.6 60,140.4 80,141.2 100,141.9 120,142.5 140,143.1 160,143.7 180,144.1 200,144.5 220,144.7 240,144.9 260,145.0 280,145.0 300,144.9 320,144.7 340,144.4 360,144.0 380,143.5 400,143.0 420,142.4 440,141.7 460,141.0 480,140.2 500,139.4 520,138.6 540,137.8 560,136.9 580,136.1 600,135.4 620,134.6 640,133.9 660,133.3 680,132.7 700,132.2 720,131.8 740,131.4 760,131.2 780,131.1 800,131.0 820,131.0 840,131.2 860,131.4 880,131.7 900,132.2 920,132.6 940,133.2 960,133.8 980,134.5 1000,135.3 1020,136.0 1040,136.8 1060,137.7 1080,138.5 1100,139.3 1120,140.1 1140,140.9 1160,141.6 1180,142.3 1200,142.9 1220,143.5 1240,143.9 1260,144.3 1280,144.6 1300,144.9 1320,145.0 1340,145.0 1360,144.9 1380,144.8 1400,144.5 1420,144.1 1440,143.7 1460,143.2 1480,142.6 1500,142.0 1520,141.3 1540,140.5 1560,139.7 1580,138.9 1600,138.1 1620,137.3 1640,136.5 1660,135.7 1680,134.9 1700,134.2 1720,133.5 1740,132.9 1760,132.4 1780,131.9 1800,131.6 1820,131.3 1840,131.1 1860,131.0 1880,131.0 1900,131.1 1920,131.3 1940,131.6 1960,132.0 1980,132.4 2000,133.0" fill="none" stroke="#1a1a1a" stroke-width="2.5"/>
+    </svg>
+    <div class="rover">
+      <svg viewBox="0 6 100 114"><ellipse cx="50" cy="112" rx="38" ry="5" fill="rgba(0,0,0,.15)"/><circle cx="28" cy="100" r="10" fill="#2b2b2b" stroke="#1a1a1a" stroke-width="2.5"/><circle cx="72" cy="100" r="10" fill="#2b2b2b" stroke="#1a1a1a" stroke-width="2.5"/><rect x="47.5" y="34" width="5" height="22" rx="1" fill="#2b2b2b" stroke="#1a1a1a" stroke-width="2"/><path d="M36 36 Q50 8 70 22 L64 30 Z" fill="#e8322b" stroke="#1a1a1a" stroke-width="2.5" stroke-linejoin="round"/><circle cx="70" cy="22" r="5" fill="#fff" stroke="#1a1a1a" stroke-width="2"/><rect x="34" y="31" width="32" height="8" rx="4" fill="#fff" stroke="#1a1a1a" stroke-width="2"/><rect x="14" y="54" width="72" height="44" rx="10" fill="#fa89d2" stroke="#1a1a1a" stroke-width="2.5"/><circle cx="50" cy="76" r="13" fill="#fff" stroke="#1a1a1a" stroke-width="2.5"/><circle cx="52.5" cy="79" r="6.5" fill="#1a1a1a"/><circle cx="54.5" cy="76.5" r="1.8" fill="#fff"/></svg>
+    </div>
+  </div>
+
+  <main class="grid" id="grid" aria-label="24 doors, one for each day of December"></main>
+</div>
+
+<div class="veil" id="veil" role="dialog" aria-modal="true" aria-labelledby="cardTitle">
+  <div class="card" id="card">
+    <button class="close" id="closeBtn" aria-label="Close">×</button>
+    <span class="day" id="cardDay"></span>
+    <span class="vig" id="cardVig"><img id="cardImg" alt=""></span>
+    <div class="lockart" id="lockArt" aria-hidden="true"><svg viewBox="0 0 240 150">
+      <ellipse cx="120" cy="143" rx="105" ry="6" fill="rgba(0,0,0,.12)"/>
+      <g stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round">
+        <rect x="22" y="58" width="104" height="82" rx="6" fill="var(--lc)"/>
+        <rect x="14" y="40" width="120" height="22" rx="5" fill="var(--lc)"/>
+        <rect x="65" y="40" width="18" height="100" fill="#fff" fill-opacity=".85"/>
+        <path d="M74 40 C58 12 30 22 52 40 Z M74 40 C90 12 118 22 96 40 Z" fill="#fff"/>
+        <g class="padlock"><path d="M62 92 v-10 a12 12 0 0 1 24 0 v10" fill="none" stroke-width="5"/><rect x="56" y="90" width="36" height="30" rx="6" fill="var(--pc)"/><circle cx="74" cy="102" r="4" fill="#1a1a1a" stroke="none"/><rect x="72.5" y="104" width="3" height="8" fill="#1a1a1a" stroke="none"/></g>
+      </g>
+      <g transform="translate(146 30) scale(.85)"><g class="bot">
+        <circle cx="28" cy="100" r="10" fill="#2b2b2b" stroke="#1a1a1a" stroke-width="2.5"/><circle cx="72" cy="100" r="10" fill="#2b2b2b" stroke="#1a1a1a" stroke-width="2.5"/>
+        <rect x="47.5" y="34" width="5" height="22" rx="1" fill="#2b2b2b" stroke="#1a1a1a" stroke-width="2"/>
+        <path d="M36 36 Q50 8 70 22 L64 30 Z" fill="#e8322b" stroke="#1a1a1a" stroke-width="2.5" stroke-linejoin="round"/><circle cx="70" cy="22" r="5" fill="#fff" stroke="#1a1a1a" stroke-width="2"/><rect x="34" y="31" width="32" height="8" rx="4" fill="#fff" stroke="#1a1a1a" stroke-width="2"/>
+        <rect x="14" y="54" width="72" height="44" rx="10" fill="var(--rc)" stroke="#1a1a1a" stroke-width="2.5"/>
+        <circle cx="50" cy="76" r="13" fill="#fff" stroke="#1a1a1a" stroke-width="2.5"/><circle cx="43.5" cy="78" r="6.5" fill="#1a1a1a"/><circle cx="45.5" cy="75.5" r="1.8" fill="#fff"/>
+        <path d="M-6 40 q4 -10 10 -4 M-14 56 q6 -8 10 0" fill="none" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"/>
+      </g></g>
+      <text x="196" y="22" font-family="Assistant, sans-serif" font-weight="800" font-size="26" fill="#1a1a1a">?</text>
+    </svg></div>
+    <h2 id="cardTitle"></h2>
+    <p id="cardText"></p>
+    <a class="btn" id="cardBtn" target="_blank" rel="noopener"></a>
+    <p class="small" id="cardSmall"></p>
+  </div>
+</div>
+
+<footer>
+  <div class="in">
+    <div class="site">
+      <img src="assets/youthailab_rounded.png" alt="Youth AI Lab">
+      <p>All our activities, ideation sheets and tools for educators<br>are waiting for you on our website.</p>
+      <a class="go" href="https://www.youth-ai-lab.eu" target="_blank" rel="noopener">Visit Youth AI Lab</a>
+    </div>
+    <img class="strip" src="assets/partners-and-eu.webp" alt="Co-funded by the European Union. Partners: L.A.B, Vent des Îles, Universitat Autònoma de Barcelona, Perlatecnica, Digitale Wolven">
+    <div class="funding">
+      <p class="disc">All the resources are free, under the Creative Commons BY-SA 4.0 licence. Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Education and Culture Executive Agency (EACEA). Neither the European Union nor the granting authority can be held responsible for them.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const SITE = 'https://www.youth-ai-lab.eu/_files/ugd/';
+// One resource per day. Days 1 to 23: the 22 ideation sheets and the chatbot workshops, mixed. Day 24: the gift.
+const DAYS = [
+  { t: 'AI Lab: Inside the Machine', d: 'Play against AI in fun challenges and discover how it actually works.', v: 'IntroductoryAIGame_PredictiveAI', u: SITE + '0bd956_23cf75ba80ae4c1196eabca6fb24bd0c.pdf' },
+  { t: 'Hand Signs', d: 'Talk to a robot with your hands, and ask who the machine was trained to understand or leave out.', v: 'HandSigns', u: SITE + '0bd956_f75c553ab3c1461598389cc9aa692880.pdf' },
+  { t: 'The Stupid Invention', d: 'Design an absurd invention, dress it up with AI, pitch it to a jury and learn to spot what AI makes look real.', v: 'TheStupidInvention', u: SITE + '0bd956_73c3ba9f6bf24ad9b6b553bb174e6e29.pdf' },
+  { t: 'Mbot2 Navigator', d: 'Code a robot that sees: make it stop at a red sign, and find out why its camera gets fooled.', v: 'MbotNavigator', u: SITE + '0bd956_a0a6b78e661b4b7a9f3b2034ab3078f8.pdf' },
+  { t: 'Keep an Eye on AI', d: 'Hunt for AI in your city and decide: is it real AI or just automation?', v: 'KeepEyeAI', u: SITE + '0bd956_2017c9b838c54bcabeda4dcce7a6e53a.pdf' },
+  { t: 'Learning Python', d: 'Write your first Python programs, from a single line to a geometry calculator.', v: 'LearningPython', u: SITE + '0bd956_4a44df12ba7045f58973484fb90fc3d8.pdf' },
+  { t: "Lya's Village", d: 'Save a village from a runaway AI: win the mini-games, beat the robots of its flaws, and stop it.', v: 'LyaVillage', u: SITE + '0bd956_f010caec0023442e8dfeeeb1d95ad4f3.pdf' },
+  { t: 'Firewall', d: 'Program an unplugged forest robot with secret rules and race it to the village.', v: 'Firewall', u: SITE + '0bd956_630e6ec195144ecb820b7d8d9a289506.pdf' },
+  { t: 'The Bias Bounty Hunt Challenge', d: 'Hunt down the stereotypes hidden in a language model, then write the prompt that disarms them.', v: 'BiasBountyHunt', u: SITE + '0bd956_d4d74b2f1660434989a7401bcafa127f.pdf' },
+  { t: 'Make Cities Great Again', d: 'Equip a robot with senses and discover how to make your city healthier for everyone.', v: 'CitiesGreat', u: SITE + '0bd956_23d9c659c4484ef18fddf2475a09d183.pdf' },
+  { t: 'Website and AI', d: 'Follow a trail of scrolls to finish a website, then see what AI can and cannot repair.', v: 'WebsiteAI', u: SITE + '0bd956_9455ba3665764c3680d62f25c46155d3.pdf' },
+  { t: 'Build your own chatbot', d: 'Six workshops to build a chatbot, choose what it reads, and decide who is in charge.', v: 'chatbot', u: 'https://youth-ai-lab.github.io/yal-workshop/', b: 'Open the workshops' },
+  { t: 'AI Detectives: How Do Machines Learn?', d: 'Sort the cards, train the machine, and find out who really decides what it learns.', v: 'UAB_AI_Detectives', u: SITE + '0bd956_663d6d1177ed4b7b8bb90dd24857689c.pdf' },
+  { t: 'micro:bit CreateAI: Making a game box!', d: 'Train a pocket computer to recognise your moves, and turn each gesture into a mini-game.', v: 'microbitgamebox', u: SITE + '0bd956_8ae15da9e93e452489ec713068b98f33.pdf' },
+  { t: 'Illusion is all that matters', d: 'Can a machine really “think”? Read, debate, and design a robot for good.', v: 'Illusions', u: SITE + '0bd956_2937689684204971b13b585933fe18b2.pdf' },
+  { t: 'Bio-inspired Algorithms: Reinforce your Learnings', d: 'Learn like AI does: trial, error, and rewards, then program a real robot.', v: 'BioInspiredAlgorithms', u: SITE + '0bd956_83da7b18da6244d48884babd9cc389db.pdf' },
+  { t: 'Looks Right… Is It Right?', d: 'Test AI outputs for accuracy, bias, and fairness: can you spot the flaws?', v: 'LooksRight', u: SITE + '0bd956_dd3c542fade845f297818f4f8aa65c8e.pdf' },
+  { t: 'AI and Hacking', d: 'Play the hacker AI or the guardian AI, and find out what each card means in real life.', v: 'AI_Hacking', u: SITE + '0bd956_ffc696ac0acc4fdaae2022d64f1733b9.pdf' },
+  { t: 'Designing an AI with a Robot', d: 'Take on a sustainability challenge and prototype a robot that sees, decides, and acts.', v: 'UAB_RobotAiDesigning', u: SITE + '0bd956_4a9b7cb56ef94e92ab50df5d3bd85be6.pdf' },
+  { t: 'BIAS: Genre matters', d: 'Catch AI making gender assumptions and ask: can two numbers really define who you are?', v: 'BIAIS', u: SITE + '0bd956_90f1f77466574e168d3dc3f9cb04228e.pdf' },
+  { t: 'WikiYouthBot', d: 'Pick a local issue, gather the real sources, and turn a generative AI into your own expert.', v: 'WikiYouthBot', u: SITE + '0bd956_0878cfbbd4824bb19e58b82bb11edf8e.pdf' },
+  { t: "From Data to the Machine's Brain", d: 'Train your first model, watch it fail, then build a neuron with your own hands.', v: 'UAB_MachineBrain', u: SITE + '0bd956_2fbfd8af364f4d93b88f443415f85314.pdf' },
+  { t: 'From Prototype to Test', d: 'Push your AI robot to its limits, log what breaks, then defend your project on demo day.', v: 'PrototypeTest', u: SITE + '0bd956_924be38bfa044dcab8898460ff242efd.pdf' },
+  { t: 'Your gift: the AI Christmas Quiz', d: 'Can you think like a language model, and can you spot a fake? Ten questions to test your AI instincts, just for fun.', v: 'gift', u: 'quiz.html', b: 'Play the quiz' }
+];
+// Position of each door on the grid (mixed-up order)
+const ORDER = [7, 19, 2, 14, 23, 10, 1, 16, 24, 5, 12, 21, 18, 3, 9, 13, 22, 6, 11, 20, 4, 15, 8, 17];
+const COLORS = ['#f37030', '#38b6ff', '#7ed957', '#fa89d2', '#f9c724', '#a98bf5'];
+
+const ICONS = {
+  chatbot: '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="46" fill="#fff" stroke="#fa89d2" stroke-width="8"/><path d="M24 30 h52 a8 8 0 0 1 8 8 v22 a8 8 0 0 1 -8 8 h-30 l-12 10 v-10 h-10 a8 8 0 0 1 -8 -8 v-22 a8 8 0 0 1 8 -8 z" fill="#38b6ff" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/><circle cx="38" cy="49" r="5" fill="#1a1a1a"/><circle cx="62" cy="49" r="5" fill="#1a1a1a"/><path d="M50 30 v-10" stroke="#1a1a1a" stroke-width="3"/><circle cx="50" cy="17" r="4" fill="#f9c724" stroke="#1a1a1a" stroke-width="2.5"/></svg>',
+  gift: '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="46" fill="#fff" stroke="#fa89d2" stroke-width="8"/><rect x="24" y="44" width="52" height="34" fill="#f37030" stroke="#1a1a1a" stroke-width="3"/><rect x="20" y="34" width="60" height="12" fill="#f37030" stroke="#1a1a1a" stroke-width="3"/><rect x="45" y="34" width="10" height="44" fill="#f9c724" stroke="#1a1a1a" stroke-width="3"/><path d="M50 34 C40 18 26 26 38 34 Z M50 34 C60 18 74 26 62 34 Z" fill="#f9c724" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/></svg>'
+};
+const imgSrc = v => ICONS[v] ? 'data:image/svg+xml;utf8,' + encodeURIComponent(ICONS[v]) : 'assets/vignettes/' + v + '.png';
+const BOW = '<svg class="bow" viewBox="0 0 60 30"><path d="M30 26 C18 0 0 8 14 22 Z M30 26 C42 0 60 8 46 22 Z" fill="#fff" stroke="#1a1a1a" stroke-width="2.5" stroke-linejoin="round"/><circle cx="30" cy="24" r="5" fill="#fff" stroke="#1a1a1a" stroke-width="2.5"/></svg>';
+const LOCK = '<svg class="lock" viewBox="0 0 24 24" fill="#fff" stroke="#1a1a1a" stroke-width="2"><rect x="4" y="10" width="16" height="12" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none"/></svg>';
+
+// Today's date. ?date=2026-12-05 to test a day, ?preview=all to open everything.
+const params = new URLSearchParams(location.search);
+let now = new Date();
+if (params.get('date')) { const p = params.get('date').split('-'); now = new Date(+p[0], +p[1] - 1, +p[2], 12); }
+const YEAR = 2026;
+const preview = params.get('preview') === 'all';
+function unlocked(day) { return preview || now >= new Date(YEAR, 11, day); }
+const todayDay = (now.getFullYear() === YEAR && now.getMonth() === 11 && now.getDate() <= 24) ? now.getDate() : null;
+
+const label = document.getElementById('todayLabel');
+if (preview) label.textContent = 'Preview: all doors open';
+else if (now < new Date(YEAR, 11, 1)) label.textContent = 'The first door opens on 1 December';
+else if (todayDay) label.textContent = 'Today: door ' + todayDay;
+else label.textContent = 'All 24 doors are open';
+
+let opened = [];
+if (params.has('reset')) { try { localStorage.removeItem('yal-advent-opened'); } catch (e) {} }
+try { opened = JSON.parse(localStorage.getItem('yal-advent-opened') || '[]'); } catch (e) {}
+const save = () => { try { localStorage.setItem('yal-advent-opened', JSON.stringify(opened)); } catch (e) {} };
+
+const grid = document.getElementById('grid');
+ORDER.forEach((day, i) => {
+  const b = document.createElement('button');
+  b.className = 'door'; b.style.setProperty('--c', COLORS[(i * 5 + Math.floor(i / 6) * 3) % COLORS.length]);
+  b.dataset.day = day;
+  b.setAttribute('aria-label', 'Door ' + day);
+  render(b);
+  b.addEventListener('click', () => clickDoor(b));
+  grid.appendChild(b);
+});
+
+function render(b) {
+  const day = +b.dataset.day, ok = unlocked(day), isOpen = ok && opened.includes(day);
+  b.classList.toggle('locked', !ok); b.classList.toggle('open', isOpen); b.classList.toggle('today-door', day === todayDay);
+  b.innerHTML = isOpen
+    ? '<span class="vig"><img src="' + imgSrc(DAYS[day - 1].v) + '" alt=""></span><span class="num">' + day + '</span>'
+    : '<span class="ribbon-v"></span><span class="ribbon-h"></span>' + BOW + '<span class="num">' + day + '</span>' + (ok ? '' : LOCK);
+}
+
+function clickDoor(b) {
+  const day = +b.dataset.day;
+  if (!unlocked(day)) {
+    b.classList.remove('shake'); void b.offsetWidth; b.classList.add('shake');
+    showLocked(day); return;
+  }
+  const first = !opened.includes(day);
+  if (first) { opened.push(day); save(); confetti(); }
+  render(b); showCard(day);
+}
+
+const veil = document.getElementById('veil');
+function showCard(day) {
+  const r = DAYS[day - 1];
+  document.getElementById('cardDay').textContent = day + ' December';
+  document.getElementById('lockArt').style.display = 'none';
+  const vig = document.getElementById('cardVig'); vig.style.display = ''; vig.style.setProperty('--c', document.querySelector('[data-day="' + day + '"]').style.getPropertyValue('--c'));
+  const img = document.getElementById('cardImg'); img.src = imgSrc(r.v); img.alt = r.t;
+  document.getElementById('cardTitle').textContent = r.t;
+  document.getElementById('cardText').textContent = r.d;
+  const btn = document.getElementById('cardBtn'); btn.style.display = ''; btn.href = r.u; btn.textContent = r.b || 'Download the sheet';
+  document.getElementById('cardSmall').textContent = day < 24 ? 'Come back tomorrow for door ' + (day + 1) + '.' : 'Merry Christmas from the Youth AI Lab team!';
+  veil.classList.add('on'); document.getElementById('closeBtn').focus();
+}
+function showLocked(day) {
+  document.getElementById('cardDay').textContent = day + ' December';
+  document.getElementById('cardVig').style.display = 'none';
+  const art = document.getElementById('lockArt'); art.style.display = 'block';
+  const lc = document.querySelector('[data-day="' + day + '"]').style.getPropertyValue('--c');
+  art.style.setProperty('--lc', lc);
+  const others = COLORS.filter(c => c !== lc); const rc = others[day % others.length]; art.style.setProperty('--rc', rc);
+  const rest = others.filter(c => c !== rc); art.style.setProperty('--pc', rest[(day * 3 + 1) % rest.length]);
+  document.getElementById('cardTitle').textContent = 'Not yet!';
+  document.getElementById('cardText').textContent = 'This gift stays wrapped until ' + day + ' December. No peeking, even for a robot.';
+  document.getElementById('cardBtn').style.display = 'none';
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const n = Math.round((new Date(YEAR, 11, day) - today) / 86400000);
+  const small = document.getElementById('cardSmall');
+  small.innerHTML = '<span class="countdown">' + (n === 1 ? 'Opens tomorrow' : 'Opens in ' + n + ' days') + '</span>';
+  veil.classList.add('on'); document.getElementById('closeBtn').focus();
+}
+function closeCard() { veil.classList.remove('on'); }
+document.getElementById('closeBtn').addEventListener('click', closeCard);
+veil.addEventListener('click', e => { if (e.target === veil) closeCard(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCard(); });
+
+function confetti() {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  for (let i = 0; i < 40; i++) {
+    const c = document.createElement('span'); c.className = 'confetti';
+    c.style.left = Math.random() * 100 + 'vw'; c.style.background = COLORS[i % COLORS.length];
+    c.style.animationDuration = (1.6 + Math.random() * 1.6) + 's'; c.style.animationDelay = (Math.random() * .3) + 's';
+    document.body.appendChild(c); setTimeout(() => c.remove(), 3600);
+  }
+}
+
+// Falling snow
+(function () {
+  const cv = document.getElementById('snow'), ctx = cv.getContext('2d'); let flakes = [];
+  function size() { cv.width = innerWidth; cv.height = innerHeight; flakes = Array.from({ length: Math.round(innerWidth / 14) }, () => ({ x: Math.random() * cv.width, y: Math.random() * cv.height, r: 1.5 + Math.random() * 3, s: .4 + Math.random() * 1, w: Math.random() * 6 })); }
+  size(); addEventListener('resize', size);
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  (function tick() {
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    for (const f of flakes) {
+      f.y += f.s; f.w += .02; f.x += Math.sin(f.w) * .4;
+      if (f.y > cv.height) { f.y = -5; f.x = Math.random() * cv.width; }
+      ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, 6.3); ctx.fillStyle = '#fff'; ctx.strokeStyle = 'rgba(56,182,255,.55)'; ctx.lineWidth = 1; ctx.fill(); ctx.stroke();
+    }
+    requestAnimationFrame(tick);
+  })();
+})();
+</script>
+</body>
+</html>
