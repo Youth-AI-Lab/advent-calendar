@@ -30,7 +30,6 @@ header img.logo { width: 92px; height: 92px; border-radius: 50%; }
 h1 { font-size: clamp(30px, 5vw, 46px); font-weight: 800; margin: 0; line-height: 1.05; color: var(--ink); }
 .with { font-size: clamp(16px, 2.2vw, 19px); font-weight: 600; margin: 6px 0 0; color: var(--ink); } .with span { font-weight: 800; background: linear-gradient(transparent 55%, var(--pink) 55%); padding: 0 3px; }
 .lights { display: flex; justify-content: center; gap: clamp(12px, 2.6vw, 26px); margin: 0 auto 8px; max-width: 640px; position: relative; }
-.lights:before { content: ""; position: absolute; left: -6px; right: -6px; top: 2px; height: 26px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'%3E%3Cpath d='M0 17 Q50 -5 100 17' fill='none' stroke='%231a1a1a' stroke-width='2.5' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") no-repeat center / 100% 100%; }
 .lights i { width: 14px; height: 20px; border: 2.5px solid var(--ink); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; margin-top: 14px; animation: blink 1.4s infinite alternate; }
 .lights i:nth-child(5n+1) { background: var(--pink); } .lights i:nth-child(5n+2) { background: var(--blue); animation-delay: .3s; } .lights i:nth-child(5n+3) { background: var(--yellow); animation-delay: .6s; } .lights i:nth-child(5n+4) { background: var(--green); animation-delay: .9s; } .lights i:nth-child(5n) { background: var(--purple); animation-delay: 1.2s; }
 @keyframes blink { to { filter: brightness(1.25); box-shadow: 0 0 12px 3px rgba(255,255,255,.9); } }
@@ -137,6 +136,29 @@ footer p.lic { font-size: 13px; margin: 16px 0 0; }
 @keyframes chase { 0%, 46%, 100% { box-shadow: none; } 16%, 30% { filter: brightness(1.12) saturate(1.1); box-shadow: 0 0 8px 3px rgba(255,255,255,.85), 0 0 20px 8px var(--g); } }
 .lights i:nth-child(5n+3) { background: #ffd60a !important; }
 @media (prefers-reduced-motion: reduce) { .lights i { animation: none !important; } }
+/* garland shape */
+.lights { position: relative; display: flex; justify-content: space-between; height: 58px; max-width: 600px; margin: 0 auto 0; padding: 0 2px; }
+.lights:before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 40px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40' preserveAspectRatio='none'%3E%3Cpath d='M0 4 Q50 44 100 4' fill='none' stroke='%231a1a1a' stroke-width='2.5' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") no-repeat center / 100% 100%; }
+.lights i { position: relative; margin-top: 0 !important; transform-origin: 50% -6px; }
+.lights i:after { content: ""; position: absolute; left: 50%; top: -8px; width: 8px; height: 8px; margin-left: -4px; background: #1a1a1a; border-radius: 2px 2px 1px 1px; }
+.lights i:nth-child(1) { top: 11.4px; transform: rotate(-7.1deg); }
+.lights i:nth-child(2) { top: 15.8px; transform: rotate(-6.2deg); }
+.lights i:nth-child(3) { top: 19.5px; transform: rotate(-5.2deg); }
+.lights i:nth-child(4) { top: 22.7px; transform: rotate(-4.3deg); }
+.lights i:nth-child(5) { top: 25.2px; transform: rotate(-3.3deg); }
+.lights i:nth-child(6) { top: 27.0px; transform: rotate(-2.4deg); }
+.lights i:nth-child(7) { top: 28.3px; transform: rotate(-1.4deg); }
+.lights i:nth-child(8) { top: 28.9px; transform: rotate(-0.5deg); }
+.lights i:nth-child(9) { top: 28.9px; transform: rotate(0.5deg); }
+.lights i:nth-child(10) { top: 28.3px; transform: rotate(1.4deg); }
+.lights i:nth-child(11) { top: 27.0px; transform: rotate(2.4deg); }
+.lights i:nth-child(12) { top: 25.2px; transform: rotate(3.3deg); }
+.lights i:nth-child(13) { top: 22.7px; transform: rotate(4.3deg); }
+.lights i:nth-child(14) { top: 19.5px; transform: rotate(5.2deg); }
+.lights i:nth-child(15) { top: 15.8px; transform: rotate(6.2deg); }
+.lights i:nth-child(16) { top: 11.4px; transform: rotate(7.1deg); }
+@media (max-width: 520px) { .lights { gap: 0; } .lights i { width: 13px !important; height: 18px !important; } .lights i:nth-child(n+11) { display: block !important; } }
+/* end garland shape */
 </style>
 </head>
 <body>
