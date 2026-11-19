@@ -22,12 +22,12 @@ body.playing h1 { font-size: 24px; }
 
 body.playing .wrap { padding-top: 16px; }
 
-.lights { display: flex; justify-content: center; gap: clamp(12px, 2.6vw, 24px); margin: 0 auto 8px; max-width: 560px; position: relative; }
+.lights { display: flex; justify-content: space-between; margin: 0 auto 8px; max-width: 560px; position: relative; }
 .lights:before { content: ""; position: absolute; left: 0; right: 0; top: 6px; height: 20px; border-top: 2.5px solid var(--ink); border-radius: 50%; }
 .lights i { width: 14px; height: 20px; border: 2.5px solid var(--ink); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; margin-top: 14px; animation: blink 1.4s infinite alternate; }
 .lights i:nth-child(5n+1) { background: var(--pink); } .lights i:nth-child(5n+2) { background: var(--blue); animation-delay: .3s; } .lights i:nth-child(5n+3) { background: var(--yellow); animation-delay: .6s; } .lights i:nth-child(5n+4) { background: var(--green); animation-delay: .9s; } .lights i:nth-child(5n) { background: var(--purple); animation-delay: 1.2s; }
 @keyframes blink { to { filter: brightness(1.25); box-shadow: 0 0 12px 3px rgba(255,255,255,.9); } }
-@media (max-width: 520px) { .lights i:nth-child(n+11) { display: none; } }
+@media (max-width: 520px) { .lights i { width: 11px !important; height: 16px !important; } }
 h1 { font-size: clamp(26px, 4.4vw, 38px); font-weight: 800; margin: 0; line-height: 1.05; color: var(--ink); }
 .with { font-size: clamp(16px, 2.2vw, 19px); font-weight: 600; margin: 10px 0 0; color: var(--ink); } .with .hl { white-space: nowrap; font-weight: 800; color: var(--ink); background: var(--pink); border-radius: 6px; padding: 0 6px; }
 .back { position: absolute; top: 14px; left: 16px; z-index: 5; font-weight: 800; color: var(--ink); font-size: 14px; text-decoration: none; background: #fff; border: 2px solid var(--ink); border-radius: 99px; padding: 3px 12px; }
@@ -153,6 +153,24 @@ footer a { color: var(--ink); font-weight: 700; }
 @media (max-width: 620px) { .choices, .rounds { grid-template-columns: 1fr; } .bar { grid-template-columns: 6em 1fr 3.4em; font-size: 15px; } }
 @media (prefers-reduced-motion: reduce) { .giftbox .hop1, .giftbox .hop2, .giftbox .tw, .lights i, .sheet, .bot, .giftbox .shake, .confetti, .end .bot { animation: none !important; } #snow { display: none; } .bar .fill { transition: none; } }
 
+/* bulbs on wire */
+.lights i:nth-child(1) { margin-top: 12.8px; transform: rotate(-8.9deg); transform-origin: 50% 0; }
+.lights i:nth-child(2) { margin-top: 9.7px; transform: rotate(-3.2deg); transform-origin: 50% 0; }
+.lights i:nth-child(3) { margin-top: 8.0px; transform: rotate(-2.1deg); transform-origin: 50% 0; }
+.lights i:nth-child(4) { margin-top: 6.9px; transform: rotate(-1.5deg); transform-origin: 50% 0; }
+.lights i:nth-child(5) { margin-top: 6.1px; transform: rotate(-1.0deg); transform-origin: 50% 0; }
+.lights i:nth-child(6) { margin-top: 5.5px; transform: rotate(-0.7deg); transform-origin: 50% 0; }
+.lights i:nth-child(7) { margin-top: 5.2px; transform: rotate(-0.4deg); transform-origin: 50% 0; }
+.lights i:nth-child(8) { margin-top: 5.0px; transform: rotate(-0.1deg); transform-origin: 50% 0; }
+.lights i:nth-child(9) { margin-top: 5.0px; transform: rotate(0.1deg); transform-origin: 50% 0; }
+.lights i:nth-child(10) { margin-top: 5.2px; transform: rotate(0.4deg); transform-origin: 50% 0; }
+.lights i:nth-child(11) { margin-top: 5.5px; transform: rotate(0.7deg); transform-origin: 50% 0; }
+.lights i:nth-child(12) { margin-top: 6.1px; transform: rotate(1.0deg); transform-origin: 50% 0; }
+.lights i:nth-child(13) { margin-top: 6.9px; transform: rotate(1.5deg); transform-origin: 50% 0; }
+.lights i:nth-child(14) { margin-top: 8.0px; transform: rotate(2.1deg); transform-origin: 50% 0; }
+.lights i:nth-child(15) { margin-top: 9.7px; transform: rotate(3.2deg); transform-origin: 50% 0; }
+.lights i:nth-child(16) { margin-top: 12.8px; transform: rotate(8.9deg); transform-origin: 50% 0; }
+/* end bulbs */
 </style>
 </head>
 <body>

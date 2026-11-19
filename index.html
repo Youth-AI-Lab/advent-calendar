@@ -29,12 +29,12 @@ header { display: flex; align-items: center; gap: 18px; justify-content: center;
 header img.logo { width: 92px; height: 92px; border-radius: 50%; }
 h1 { font-size: clamp(30px, 5vw, 46px); font-weight: 800; margin: 0; line-height: 1.05; color: var(--ink); }
 .with { font-size: clamp(16px, 2.2vw, 19px); font-weight: 600; margin: 6px 0 0; color: var(--ink); } .with span { font-weight: 800; background: linear-gradient(transparent 55%, var(--pink) 55%); padding: 0 3px; }
-.lights { display: flex; justify-content: center; gap: clamp(12px, 2.6vw, 26px); margin: 0 auto 8px; max-width: 640px; position: relative; }
+.lights { display: flex; justify-content: space-between; margin: 0 auto 8px; max-width: 640px; position: relative; }
 .lights:before { content: ""; position: absolute; left: 0; right: 0; top: 6px; height: 20px; border-top: 2.5px solid var(--ink); border-radius: 50%; }
 .lights i { width: 14px; height: 20px; border: 2.5px solid var(--ink); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; margin-top: 14px; animation: blink 1.4s infinite alternate; }
 .lights i:nth-child(5n+1) { background: var(--pink); } .lights i:nth-child(5n+2) { background: var(--blue); animation-delay: .3s; } .lights i:nth-child(5n+3) { background: var(--yellow); animation-delay: .6s; } .lights i:nth-child(5n+4) { background: var(--green); animation-delay: .9s; } .lights i:nth-child(5n) { background: var(--purple); animation-delay: 1.2s; }
 @keyframes blink { to { filter: brightness(1.25); box-shadow: 0 0 12px 3px rgba(255,255,255,.9); } }
-@media (max-width: 520px) { .lights i:nth-child(n+11) { display: none; } }
+@media (max-width: 520px) { .lights i { width: 11px !important; height: 16px !important; } }
 .intro { max-width: 720px; text-wrap: balance; margin: 10px auto 0; font-size: clamp(15px, 2vw, 18px); line-height: 1.45; }
 .today { display: inline-block; margin-top: 10px; background: var(--ink); color: #fff; font-weight: 700; padding: 5px 14px; border-radius: 99px; font-size: 14px; }
 
@@ -115,6 +115,24 @@ footer p.lic { font-size: 13px; margin: 16px 0 0; }
 @media (max-width: 720px) { footer .site p, footer .funding { text-align: center; } footer .funding { flex-direction: column; } }
 @media (prefers-reduced-motion: reduce) { .lockart .padlock, .lockart .bot, .lights i, .rover, .rover svg, .door.today-door, .card, .confetti { animation: none !important; } #snow { display: none; } }
 
+/* bulbs on wire */
+.lights i:nth-child(1) { margin-top: 12.9px; transform: rotate(-8.4deg); transform-origin: 50% 0; }
+.lights i:nth-child(2) { margin-top: 9.7px; transform: rotate(-2.9deg); transform-origin: 50% 0; }
+.lights i:nth-child(3) { margin-top: 8.0px; transform: rotate(-1.8deg); transform-origin: 50% 0; }
+.lights i:nth-child(4) { margin-top: 6.9px; transform: rotate(-1.3deg); transform-origin: 50% 0; }
+.lights i:nth-child(5) { margin-top: 6.1px; transform: rotate(-0.9deg); transform-origin: 50% 0; }
+.lights i:nth-child(6) { margin-top: 5.5px; transform: rotate(-0.6deg); transform-origin: 50% 0; }
+.lights i:nth-child(7) { margin-top: 5.2px; transform: rotate(-0.4deg); transform-origin: 50% 0; }
+.lights i:nth-child(8) { margin-top: 5.0px; transform: rotate(-0.1deg); transform-origin: 50% 0; }
+.lights i:nth-child(9) { margin-top: 5.0px; transform: rotate(0.1deg); transform-origin: 50% 0; }
+.lights i:nth-child(10) { margin-top: 5.2px; transform: rotate(0.4deg); transform-origin: 50% 0; }
+.lights i:nth-child(11) { margin-top: 5.5px; transform: rotate(0.6deg); transform-origin: 50% 0; }
+.lights i:nth-child(12) { margin-top: 6.1px; transform: rotate(0.9deg); transform-origin: 50% 0; }
+.lights i:nth-child(13) { margin-top: 6.9px; transform: rotate(1.3deg); transform-origin: 50% 0; }
+.lights i:nth-child(14) { margin-top: 8.0px; transform: rotate(1.8deg); transform-origin: 50% 0; }
+.lights i:nth-child(15) { margin-top: 9.7px; transform: rotate(2.9deg); transform-origin: 50% 0; }
+.lights i:nth-child(16) { margin-top: 12.9px; transform: rotate(8.4deg); transform-origin: 50% 0; }
+/* end bulbs */
 </style>
 </head>
 <body>
