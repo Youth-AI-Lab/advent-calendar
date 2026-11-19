@@ -35,6 +35,7 @@ h1 { font-size: clamp(30px, 5vw, 46px); font-weight: 800; margin: 0; line-height
 .lights i:nth-child(5n+1) { background: var(--pink); } .lights i:nth-child(5n+2) { background: var(--blue); animation-delay: .3s; } .lights i:nth-child(5n+3) { background: var(--yellow); animation-delay: .6s; } .lights i:nth-child(5n+4) { background: var(--green); animation-delay: .9s; } .lights i:nth-child(5n) { background: var(--purple); animation-delay: 1.2s; }
 @keyframes blink { to { filter: brightness(1.25); box-shadow: 0 0 12px 3px rgba(255,255,255,.9); } }
 @media (max-width: 520px) { .lights i:nth-child(n+11) { display: none; } }
+.intro { max-width: 720px; text-wrap: balance; margin: 10px auto 0; font-size: clamp(15px, 2vw, 18px); line-height: 1.45; }
 .today { display: inline-block; margin-top: 10px; background: var(--ink); color: #fff; font-weight: 700; padding: 5px 14px; border-radius: 99px; font-size: 14px; }
 
 /* scene */
@@ -122,7 +123,8 @@ footer p.lic { font-size: 13px; margin: 16px 0 0; }
     <div>
       <div class="lights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
       <h1>Waiting for the Holidays</h1>
-      <p class="with">with <span>Youth AI Lab</span> · 24 days, 24 resources to explore AI with young people</p>
+      <p class="with">with <span>Youth AI Lab</span></p>
+      <p class="intro">Youth AI Lab has created many activities to explore AI with young people, and they are all free and open to everyone. Until Christmas, open a door each day and discover one of them.</p>
       <span class="today" id="todayLabel"></span>
     </div>
   </header>
